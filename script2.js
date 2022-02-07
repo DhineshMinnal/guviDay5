@@ -263,17 +263,20 @@ console.log("Max: ", max);
 
 // Function prints the first nPrimes numbers
 function printPrimes(nPrimes) {
-    var n = 0;
+    var n = 1;
     var i = 2;
+    let result = {}
 
-    while (n < nPrimes) {
+    while (n <= nPrimes) {
         if (isPrime(i)) {
-            console.log(n, "→", i);
+            result[n] = i
             n++;
         }
 
         i++;
     }
+    console.log(result)
+    return result
 }
 // Returns true if a number is prime
 function isPrime(n) {
@@ -291,5 +294,85 @@ function isPrime(n) {
     return prime
 }
 
-console.log(isPrime(5))
-// printPrimes(100);
+// console.log(isPrime(7))
+printPrimes(100)
+
+
+
+
+// // 30.  Function prints the first nPrimes numbers
+function getPrimes(nPrimes, start) {
+    var n = 1;
+    var i = start;
+    let result = {}
+
+    while (n <= nPrimes) {
+        if (isPrime(i)) {
+            result[n] = i
+            n++;
+        }
+
+        i++;
+    }
+    console.log(result)
+    return result
+}
+// Returns true if a number is prime
+function isPrime(n) {
+    let prime = true
+    if (n === 1) {
+        prime = false
+    } else if (n > 1) {
+        for (let i = 2; i < n; i++) {
+            if (n % i === 0) {
+                prime = false
+                break
+            }
+        }
+    }
+    return prime
+}
+
+// console.log(isPrime(7))
+getPrimes(100, 10)
+
+//  // 31. reversing a string
+
+var s = reverseString("JavaScript");
+console.log(s);
+function reverseString(s) {
+    return s.split("").reverse().join("")
+}
+
+
+// 32. Merging of 2 arrays
+
+var ar1 = [1, 2, 3];
+var ar2 = [4, 5, 6];
+var ar = mergeArrays(ar1, ar2);
+console.log(ar);
+function mergeArrays(ar1, ar2) {
+    // var result = [];
+    // for (let el of ar1) {
+    //     result.push(el);
+    // }
+    // for (let el of ar2) {
+    //     result.push(el)
+    // }
+
+    return [...ar1, ...ar2];
+}
+
+
+// //33. sum received through string
+
+console.log(sumCSV("1.5, 2.3, 3.1, 4, 5.5, 6, 7, 8, 9, 10.9"));
+function sumCSV(s) {
+    let arr = s.split(", ").map(ele => parseFloat(ele))
+    console.log(arr)
+    const sum = arr.reduce((pr, cr) => pr + cr, 0)
+    return sum
+}
+
+
+
